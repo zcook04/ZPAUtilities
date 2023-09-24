@@ -2,6 +2,7 @@
 
 import styles from './page.module.scss'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 export default function Home() {
 
@@ -26,7 +27,7 @@ export default function Home() {
       })
 
       const data = await response.json()
-      console.log(formData)
+      toast.success("Login Successful")
 
     } catch (error) {
       console.error(error)
