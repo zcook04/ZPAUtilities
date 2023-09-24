@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Roboto-Thin";
-  src: local('Roboto-Thin'),
+  src:
     url('/static/fonts/Roboto/Roboto-Thin.tff') format('truetype');
   font-weight: thin;
   font-style: normal;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Roboto-Regular";
-  src: local('Roboto-Regular'),
+  src:
     url('/static/fonts/Roboto/Roboto-Regular.tff') format('truetype'),
     url('/static/fonts/Roboto/Roboto-Medium.tff') format('truetype');
   font-weight: normal;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Roboto-Bold";
-  src: local('Roboto-Bold'),
+  src:
     url('/static/fonts/Roboto/Roboto-Bold.tff') format('truetype');
   font-weight: bold;
   font-style: normal;
