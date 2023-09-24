@@ -1,6 +1,6 @@
 import '../globals.css';
 import dynamic from 'next/dynamic';
-const ConnectionBar = dynamic(() => import('../../components/connectionBar/ConnectionBar'), { ssr: false });
+const ConnectionBar = dynamic(() => import('../../components/connectionBar/connectionBar'), { ssr: false });
 
 
 
