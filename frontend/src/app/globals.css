@@ -1,32 +1,7 @@
-@font-face {
-  font-family: "Roboto-Thin";
-  src:
-    url('/static/fonts/Roboto/Roboto-Thin.tff') format('truetype');
-  font-weight: thin;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Roboto-Regular";
-  src:
-    url('/static/fonts/Roboto/Roboto-Regular.tff') format('truetype'),
-    url('/static/fonts/Roboto/Roboto-Medium.tff') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Roboto-Bold";
-  src:
-    url('/static/fonts/Roboto/Roboto-Bold.tff') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-
-
 /* src: url('/static/fonts/Roboto/Roboto-Black.tff'),
 url('/static/fonts/Roboto/Roboto-BlackItalic.tff'), url('/static/fonts/Roboto/Roboto-BoldItalic.tff'), url('/static/fonts/Roboto/Roboto-Italic.tff'), url('/static/fonts/Roboto/Roboto-Light.tff'), url('/static/fonts/Roboto/Roboto-LightItalic.tff'), url('/static/fonts/Roboto/Roboto-MediumItalicItalic.tff'), url('/static/fonts/Roboto/Roboto-RegularItalic.tff'), url('/static/fonts/Roboto/Roboto-ThinItalic.tff') */
+
+@import '/fonts/Roboto/roboto-font.scss';
 
 :root {
   --max-width: 1100px;
