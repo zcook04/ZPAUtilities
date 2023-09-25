@@ -3,7 +3,7 @@ import { cookies } from "next/headers"
 
 export async function POST(req) {
     const data = await req.json()
-    const { clientId, clientSecret } = data
+    const { clientId, clientSecret, customerId } = data
 
     const encodedClientId = encodeURIComponent(clientId)
     const encodedClientSecret = encodeURIComponent(clientSecret)
@@ -31,6 +31,13 @@ export async function POST(req) {
         maxAge: authresponse.expires_in,
         refreshToken: authresponse.refresh_token,
         tokenType: authresponse.token_type
+    })
+
+    cookies().set({
+        name: 'ZscalerCustomerId',
+        value: customderId,
+        httpOnly: true,
+        maxAge: authresponse.expires_in,
     })
 
     if (!authresponse.access_token) {
