@@ -26,38 +26,10 @@ export default function Home() {
       })
 
       const data = await response.json()
-      toast.success("Login Successful")
       console.log(data)
 
     } catch (error) {
-      toast.error("Login Failed")
       console.error(error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  async function signOut(event) {
-    event.preventDefault()
-    setIsLoading(true)
-
-    try {
-      const response = await fetch('/api/auth/logout', {
-        method: 'POST',
-        body: JSON.stringify({}),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      const data = await response.json()
-      toast.success("Signout Successful")
-      console.log(data)
-
-    } catch (error) {
-      toast.error("Signout Failed")
-      console.error(error)
-    } finally {
-      setIsLoading(false)
     }
   }
 
@@ -72,7 +44,6 @@ export default function Home() {
             <input placeholder='Client Secret' type='password' value={formData.clientSecret} onChange={e => setFormData({ ...formData, clientSecret: e.target.value })} name='clientSecret' className={styles.formInput} />
             <button type='submit' disabled={isLoading} className={styles.buttonStyle}>Login</button>
           </form>
-          <div className={styles.signOut} onClick={signOut}><p>Signout</p></div>
         </div>
       </section>
     </main>
