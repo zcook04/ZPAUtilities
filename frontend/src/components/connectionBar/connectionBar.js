@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import styles from './connectionBar.module.scss'
+import { toast } from 'react-toastify'
 
 const connectionBar = () => {
     const router = useRouter();
@@ -44,6 +45,11 @@ const connectionBar = () => {
 
             if (data.status === 200) {
                 router.push('/')
+            }
+
+            if (data.status !== 200) {
+                console.log(data)
+                toast.error(data.msg)
             }
 
         } catch (error) {

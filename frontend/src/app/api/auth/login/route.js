@@ -10,7 +10,6 @@ export async function POST(req) {
 
     const payload = `client_id=${encodedClientId}&client_secret=${encodedClientSecret}`
 
-
     const response = await fetch("https://config.private.zscaler.com/signin", {
         method: "POST",
         headers: {
@@ -31,8 +30,8 @@ export async function POST(req) {
     })
 
     if (!authresponse.access_token) {
-        return NextResponse.json({ "status": 401, "msg": "login failed" })
+        return NextResponse.json({ "status": 401, "message": "Authentication Failed" })
     }
 
-    return NextResponse.json({ "status": 200, "accessToken": authresponse.access_token, "expiresIn": authresponse.expires_in, "tokenType": authresponse.token_type, "scope": authresponse.scope, "refreshToken": authresponse.refresh_token, "msg": "login success" })
+    return NextResponse.json({ "status": 200, "message": "Authentication Successful" })
 }

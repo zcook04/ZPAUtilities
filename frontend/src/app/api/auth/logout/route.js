@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server"
 import { cookies } from "next/headers"
 
-export async function POST(request) {
+export async function POST() {
     const accessToken = cookies().get("ZscalerAccessToken")
-
     if (!accessToken)
         return NextResponse.json({ "status": 401, "msg": "access token required for logout" })
 
