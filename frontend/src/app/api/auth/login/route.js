@@ -34,7 +34,5 @@ export async function POST(req) {
         return NextResponse.json({ "status": 401, "msg": "login failed" })
     }
 
-    console.log(authresponse.access_token)
-
     return NextResponse.json({ "status": 200, "accessToken": authresponse.access_token, "expiresIn": authresponse.expires_in, "tokenType": authresponse.token_type, "scope": authresponse.scope, "refreshToken": authresponse.refresh_token, "msg": "login success" })
 }

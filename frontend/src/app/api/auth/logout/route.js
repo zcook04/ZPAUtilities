@@ -18,7 +18,6 @@ export async function POST(request) {
     })
 
     if (response.status != 200) {
-        console.log(response)
         return NextResponse.json({ "status": 401, "msg": "signout failed" })
     }
 
