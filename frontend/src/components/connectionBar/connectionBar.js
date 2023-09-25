@@ -6,12 +6,10 @@ import styles from './connectionBar.module.scss'
 
 const connectionBar = () => {
     const [connected, setConnected] = useState(false)
-    const [isLoading, setIsLoading] = useState(true)
     const router = useRouter();
 
     useEffect(() => {
         const validate = async () => {
-            setIsLoading(true)
             try {
                 const response = await fetch('/api/auth/validate', {
                     method: 'POST',
@@ -29,8 +27,6 @@ const connectionBar = () => {
             } catch (error) {
                 console.error(error)
                 router.push('/')
-            } finally {
-                setIsLoading(false)
             }
         }
         validate()
