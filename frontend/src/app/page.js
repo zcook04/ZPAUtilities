@@ -8,10 +8,10 @@ export default function Home() {
 
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
-    customerId: '',
     clientId: '',
     clientSecret: '',
   })
+  const [accessToken, setAccessToken] = useState('')
 
   async function onSubmit(event) {
     event.preventDefault()
@@ -30,6 +30,30 @@ export default function Home() {
       toast.success("Login Successful")
 
     } catch (error) {
+      toast.error("Login Failed")
+      console.error(error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  async function signOut(event) {
+    event.preventDefault()
+    setIsLoading(true)
+
+    try {
+      const response = await fetch('/api/logout', {
+        method: 'POST',
+        body: JSON.stringify({ accessToken }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const data = await response.json()
+      toast.success("Signout Successful")
+
+    } catch (error) {
+      toast.error("Signout Failed")
       console.error(error)
     } finally {
       setIsLoading(false)
@@ -48,6 +72,8 @@ export default function Home() {
             <input placeholder='Client Secret' type='password' value={formData.clientSecret} onChange={e => setFormData({ ...formData, clientSecret: e.target.value })} name='clientSecret' className={styles.formInput} />
             <button type='submit' disabled={isLoading} className={styles.buttonStyle}>Login</button>
           </form>
+          <textarea name="access_token" value={accessToken} onChange={e => setAccessToken(e.target.value)} />
+          <div className={styles.signOut} onClick={signOut}><p>Signout</p></div>
         </div>
       </section>
     </main>
