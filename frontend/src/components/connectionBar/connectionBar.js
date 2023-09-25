@@ -1,35 +1,40 @@
 "use client"
 
-import { redirect } from 'next/navigation'
-import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import React, { useEffect, useState } from 'react'
 import styles from './connectionBar.module.scss'
 
-
-
 const connectionBar = () => {
+    const [connected, setConnected] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
+    const router = useRouter();
+
     useEffect(() => {
-        async () => {
-            const validatedCookie = await validateCookie()
-            if (!validatedCookie) {
-                redirect('/')
+        const validate = async () => {
+            setIsLoading(true)
+            try {
+                const response = await fetch('/api/auth/validate', {
+                    method: 'POST',
+                    body: JSON.stringify(),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+
+                const data = await response.json()
+                if (data.status !== 200) {
+                    router.push('/')
+                }
+
+            } catch (error) {
+                console.error(error)
+                router.push('/')
+            } finally {
+                setIsLoading(false)
             }
-            console.log('validated')
         }
-
-    }, [])
-
-
-    const validateCookie = async () => {
-        try {
-            const { data } = fetch('/api/auth/validate', {
-                method: 'GET',
-            })
-            return true
-        } catch (error) {
-            redirect('/')
-        }
-
-    }
+        validate()
+    }, [setConnected])
 
     return (
         <section className={styles.connectionBar}>
