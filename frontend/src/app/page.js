@@ -5,11 +5,14 @@ import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
+
+
+
 export default function Home() {
   const [formData, setFormData] = useState({
     clientId: '',
     clientSecret: '',
-    customerId: ''
+    customerId: '',
   })
   const [loading, setLoading] = useState(false)
 
@@ -44,7 +47,6 @@ export default function Home() {
   async function onSubmit(event) {
     event.preventDefault()
     setLoading(true)
-
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
