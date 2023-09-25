@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { cookies } from "next/headers"
 
 export async function POST(req) {
     const data = await req.json()
@@ -19,12 +20,21 @@ export async function POST(req) {
     })
 
     const authresponse = await response.json()
-    const accessToken = authresponse.access_token
-    console.log(accessToken)
 
-    if (!accessToken) {
+    cookies().set({
+        name: 'ZscalerAccessToken',
+        value: authresponse.access_token,
+        httpOnly: true,
+        maxAge: authresponse.expires_in * 1000,
+        refreshToken: authresponse.refresh_token,
+        tokenType: authresponse.token_type
+    })
+
+    if (!authresponse.access_token) {
         return NextResponse.json({ "status": 401, "msg": "login failed" })
     }
 
-    return NextResponse.json({ "status": 200, "accessToken": accessToken, "expiresIn": authresponse.expires_in, "tokenType": authresponse.token_type, "scope": authresponse.scope, "refreshToken": authresponse.refresh_token, "msg": "login success" })
+    console.log(authresponse.access_token)
+
+    return NextResponse.json({ "status": 200, "accessToken": authresponse.access_token, "expiresIn": authresponse.expires_in, "tokenType": authresponse.token_type, "scope": authresponse.scope, "refreshToken": authresponse.refresh_token, "msg": "login success" })
 }

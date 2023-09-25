@@ -28,6 +28,7 @@ export default function Home() {
 
       const data = await response.json()
       toast.success("Login Successful")
+      console.log(data)
 
     } catch (error) {
       toast.error("Login Failed")
@@ -51,6 +52,7 @@ export default function Home() {
       })
       const data = await response.json()
       toast.success("Signout Successful")
+      console.log(data)
 
     } catch (error) {
       toast.error("Signout Failed")
@@ -72,7 +74,6 @@ export default function Home() {
             <input placeholder='Client Secret' type='password' value={formData.clientSecret} onChange={e => setFormData({ ...formData, clientSecret: e.target.value })} name='clientSecret' className={styles.formInput} />
             <button type='submit' disabled={isLoading} className={styles.buttonStyle}>Login</button>
           </form>
-          <textarea name="access_token" value={accessToken} onChange={e => setAccessToken(e.target.value)} />
           <div className={styles.signOut} onClick={signOut}><p>Signout</p></div>
         </div>
       </section>
