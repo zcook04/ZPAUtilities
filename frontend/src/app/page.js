@@ -17,7 +17,7 @@ export default function Home() {
     setIsLoading(true)
 
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('/api/auth/login', {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
@@ -42,9 +42,9 @@ export default function Home() {
     setIsLoading(true)
 
     try {
-      const response = await fetch('/api/logout', {
+      const response = await fetch('/api/auth/logout', {
         method: 'POST',
-        body: JSON.stringify({ accessToken }),
+        body: JSON.stringify({}),
         headers: {
           'Content-Type': 'application/json',
         },

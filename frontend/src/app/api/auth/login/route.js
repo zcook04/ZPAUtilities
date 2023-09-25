@@ -25,7 +25,7 @@ export async function POST(req) {
         name: 'ZscalerAccessToken',
         value: authresponse.access_token,
         httpOnly: true,
-        maxAge: authresponse.expires_in * 1000,
+        maxAge: authresponse.expires_in,
         refreshToken: authresponse.refresh_token,
         tokenType: authresponse.token_type
     })
