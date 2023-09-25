@@ -9,11 +9,15 @@ export default function Home() {
   const [formData, setFormData] = useState({
     clientId: '',
     clientSecret: '',
+    customerId: ''
   })
+  const [loading, setLoading] = useState(false)
+
   const router = useRouter()
 
   useEffect(() => {
     const validate = async () => {
+      setLoading(true)
       try {
         const response = await fetch('/api/auth/validate', {
           method: 'POST',
@@ -30,6 +34,8 @@ export default function Home() {
 
       } catch (error) {
         console.error(error)
+      } finally {
+        setLoading(false)
       }
     }
     validate()
@@ -37,6 +43,7 @@ export default function Home() {
 
   async function onSubmit(event) {
     event.preventDefault()
+    setLoading(true)
 
     try {
       const response = await fetch('/api/auth/login', {
@@ -59,21 +66,24 @@ export default function Home() {
     } catch (error) {
       toast.error('Invalid Credentials')
       console.error(error)
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
     <main className={styles.main}>
       <section className={styles.loginWrapper}>
-
         <div className={styles.headerStyle}><h1>Authenticate To ZPA</h1></div>
-        <div className={styles.formStyle}>
+        {!loading ? <div className={styles.formStyle}>
           <form onSubmit={onSubmit}>
+            <input placeholder='Customer ID' type='text' value={formData.customerId} onChange={e => setFormData({ ...formData, customerId: e.target.value })} name='clientId' className={styles.formInput} />
             <input placeholder='Client ID' type='password' value={formData.clientId} onChange={e => setFormData({ ...formData, clientId: e.target.value })} name='clientId' className={styles.formInput} />
             <input placeholder='Client Secret' type='password' value={formData.clientSecret} onChange={e => setFormData({ ...formData, clientSecret: e.target.value })} name='clientSecret' className={styles.formInput} />
             <button type='submit' className={styles.buttonStyle}>Login</button>
           </form>
-        </div>
+        </div> :
+          <h3>Authenticating, Please Wait...</h3>}
       </section>
     </main>
   )
