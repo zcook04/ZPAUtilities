@@ -11,7 +11,6 @@ export default function Home() {
     clientId: '',
     clientSecret: '',
   })
-  const [accessToken, setAccessToken] = useState('')
 
   async function onSubmit(event) {
     event.preventDefault()
