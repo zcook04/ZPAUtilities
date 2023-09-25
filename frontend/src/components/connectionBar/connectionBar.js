@@ -54,7 +54,7 @@ const connectionBar = () => {
 
     return (
         <section className={styles.connectionBar} onClick={signOut}>
-            <h2>Connected To ZPA.  Click To Disconnect</h2>
+            <h2>Authenticated to Zscaler Private Access.  Click To Disconnect</h2>
         </section>
     )
 }

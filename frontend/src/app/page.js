@@ -3,18 +3,17 @@
 import styles from './page.module.scss'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
-
-  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     clientId: '',
     clientSecret: '',
   })
+  const router = useRouter()
 
   async function onSubmit(event) {
     event.preventDefault()
-    setIsLoading(true)
 
     try {
       const response = await fetch('/api/auth/login', {
@@ -26,9 +25,16 @@ export default function Home() {
       })
 
       const data = await response.json()
-      console.log(data)
+      if (data.status !== 200) {
+        toast.error('Invalid Credentials')
+      }
 
+      if (data.status === 200) {
+        router.push('/home')
+        toast.success('Login Successful')
+      }
     } catch (error) {
+      toast.error('Invalid Credentials')
       console.error(error)
     }
   }
@@ -42,7 +48,7 @@ export default function Home() {
           <form onSubmit={onSubmit}>
             <input placeholder='Client ID' type='password' value={formData.clientId} onChange={e => setFormData({ ...formData, clientId: e.target.value })} name='clientId' className={styles.formInput} />
             <input placeholder='Client Secret' type='password' value={formData.clientSecret} onChange={e => setFormData({ ...formData, clientSecret: e.target.value })} name='clientSecret' className={styles.formInput} />
-            <button type='submit' disabled={isLoading} className={styles.buttonStyle}>Login</button>
+            <button type='submit' className={styles.buttonStyle}>Login</button>
           </form>
         </div>
       </section>

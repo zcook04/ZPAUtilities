@@ -13,7 +13,8 @@
   color: var(--color-blue-1);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 2rem;
   padding: 3rem;
   min-width: 500px;
   min-height: 500px;
@@ -35,11 +36,6 @@
   height: 80;
   width: 100%;
   flex-direction: column;
-
-  textarea {
-    width: 100%;
-    height: 200px;
-  }
 }
 
 .formInput {
@@ -49,8 +45,6 @@
   border: 0 0 1px 0 solid black;
   margin-top: 1rem;
 }
-
-
 
 .buttonStyle {
   width: 100%;
@@ -69,24 +63,5 @@
   opacity: .8;
   cursor: pointer;
   box-shadow: var(--box-shadow-hover);
-  transition: all .25s ease-in-out;
-}
-
-.signOut {
-  padding: 1rem;
-  background-color: var(--color-blue-1);
-  width: 100%;
-  margin-top: 1rem;
-  color: white;
-
-  p {
-    text-align: center;
-  }
-}
-
-.signOut:hover {
-  opacity: .8;
-  cursor: pointer;
-  box-shadow: var(--box-shadow);
   transition: all .25s ease-in-out;
 }

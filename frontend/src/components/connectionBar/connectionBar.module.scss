@@ -8,4 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .25s ease-in-out;
+}
+
+.connectionBar:hover {
+    opacity: .7;
+    transition: all .25s ease-in-out;
+    cursor: pointer;
 }
