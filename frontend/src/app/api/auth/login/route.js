@@ -20,6 +20,10 @@ export async function POST(req) {
 
     const authresponse = await response.json()
 
+    if (!authresponse.access_token) {
+        return NextResponse.json({ "status": 401, "message": "Authentication Failed" })
+    }
+
     cookies().set({
         name: 'ZscalerAccessToken',
         value: authresponse.access_token,

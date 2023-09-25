@@ -16,7 +16,7 @@ export async function POST() {
     })
 
     if (response.status != 200) {
-        return NextResponse.json({ "status": 401, "msg": "signout failed" })
+        return NextResponse.json({ "status": 401, "msg": "signout failed", response })
     }
 
     cookies().delete("ZscalerAccessToken")

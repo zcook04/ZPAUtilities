@@ -1,12 +1,14 @@
 'use client';
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './header.module.scss'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 const Header = () => {
     const pathname = usePathname()
+    const router = useRouter()
+
     async function signOut() {
         try {
             const response = await fetch('/api/auth/logout', {
@@ -29,8 +31,33 @@ const Header = () => {
 
         } catch (error) {
             console.error(error)
+            toast.error(data.msg)
         }
     }
+
+    useEffect(() => {
+        const validate = async () => {
+            try {
+                const response = await fetch('/api/auth/validate', {
+                    method: 'POST',
+                    body: JSON.stringify(),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+
+                const data = await response.json()
+                if (data.status !== 200) {
+                    router.push('/')
+                }
+
+            } catch (error) {
+                console.error(error)
+                router.push('/')
+            }
+        }
+        validate()
+    }, [])
 
     return (
         <header className={styles.header}>
