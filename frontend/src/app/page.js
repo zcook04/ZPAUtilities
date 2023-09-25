@@ -68,7 +68,6 @@ export default function Home() {
         <div className={styles.headerStyle}><h1>Authenticate To ZPA</h1></div>
         <div className={styles.formStyle}>
           <form onSubmit={onSubmit}>
-            <input placeholder='Customer ID' type='text' value={formData.customerId} onChange={e => setFormData({ ...formData, customerId: e.target.value })} name='customerId' className={styles.formInput} />
             <input placeholder='Client ID' type='password' value={formData.clientId} onChange={e => setFormData({ ...formData, clientId: e.target.value })} name='clientId' className={styles.formInput} />
             <input placeholder='Client Secret' type='password' value={formData.clientSecret} onChange={e => setFormData({ ...formData, clientSecret: e.target.value })} name='clientSecret' className={styles.formInput} />
             <button type='submit' disabled={isLoading} className={styles.buttonStyle}>Login</button>
