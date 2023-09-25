@@ -1,7 +1,7 @@
 "use client"
 
 import styles from './page.module.scss'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
@@ -11,6 +11,29 @@ export default function Home() {
     clientSecret: '',
   })
   const router = useRouter()
+
+  useEffect(() => {
+    const validate = async () => {
+      try {
+        const response = await fetch('/api/auth/validate', {
+          method: 'POST',
+          body: JSON.stringify(),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+
+        const data = await response.json()
+        if (data.status === 200) {
+          router.push('/home')
+        }
+
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    validate()
+  }, [])
 
   async function onSubmit(event) {
     event.preventDefault()

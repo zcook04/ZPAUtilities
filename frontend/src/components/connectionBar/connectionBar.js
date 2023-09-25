@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react'
 import styles from './connectionBar.module.scss'
 
 const connectionBar = () => {
-    const [connected, setConnected] = useState(false)
     const router = useRouter();
 
     useEffect(() => {
@@ -30,7 +29,7 @@ const connectionBar = () => {
             }
         }
         validate()
-    }, [setConnected])
+    }, [])
 
     async function signOut() {
         try {
