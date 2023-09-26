@@ -35,9 +35,14 @@ const BulkAddPage = () => {
         const filteredApplicationArray = applicationArray.filter(application => application.length > 0)
         //remove duplicate FQDNs and IPv4 addresses from array
         const uniqueApplicationArray = [...new Set(filteredApplicationArray)]
-        console.log(uniqueApplicationArray)
-
+        const response = await fetch(`/api/update-app-segment`, {
+            method: 'PUT',
+            body: JSON.stringify({ "applications": uniqueApplicationArray, "applicationId": selectedAppSegment })
+        })
+        console.log(response)
     }
+
+
 
     return (
         <section className={styles.summarySection}>
