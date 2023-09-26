@@ -15,4 +15,35 @@
         margin-top: 1rem;
         color: black;
     }
+
+    textarea {
+        border: 0;
+        resize: none;
+        box-shadow: var(--box-shadow);
+        height: 400px;
+        padding: 1rem;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    textarea:focus {
+        outline: none;
+    }
+
+    .button {
+        display: flex;
+        width: 100%;
+        background-color: var(--color-blue-1);
+        padding: 1rem;
+        justify-content: center;
+        align-items: center;
+        box-shadow: var(--box-shadow);
+        color: white;
+        transition: all .25s ease-in-out;
+    }
+
+    .button:hover {
+        transition: all .25s ease-in-out;
+        opacity: .8;
+        cursor: pointer;
+    }
 }
