@@ -13,6 +13,7 @@ const BulkAddPage = async () => {
     }
 
     const appSegments = await retrieveApplicationSegments()
+    console.log(appSegments)
 
     return (
         <section className={styles.summarySection}>
@@ -21,8 +22,8 @@ const BulkAddPage = async () => {
             <p>Choose the application from the dropdown below then either paste or upload a text file containing the list of FQDN's and IPv4 addresses seperated by newlines.  An example of the expected input is shown in the text box below.</p>
 
             <select placeholder='Select An Application Segment' name='applicationSegment'>
-                {/* {retrieveApplicationSegments().map(appSegment => <option value={appSegment.id}>{appSegment.name}</option>
-                )} */}
+                {appSegments.data.map(appSegment => <option value={appSegment.id}>{appSegment.name}</option>
+                )}
             </select>
         </section>
     )
