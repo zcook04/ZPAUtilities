@@ -7,14 +7,17 @@ export async function PUT(req) {
     const { applications, applicationIdA, applicationIdB } = await req.json()
 
     if (!applications) {
+        console.error('Missing applications')
         return NextResponse.json({ message: "No applications provided" }, { status: 400 })
     }
 
-    if (!applicationIdA || applicationIdB) {
+    if (!applicationIdA || !applicationIdB) {
+        console.error('Missing applicationIdA or applicationIdB')
         return NextResponse.json({ message: "Application IDs Required" }, { status: 400 })
     }
 
     if (!customerId || !accessToken) {
+        console.error('Missing customerId or accessToken')
         return NextResponse.json({ message: "Invalid Credentials" }, { status: 401 })
     }
     const urla = `https://config.private.zscaler.com/mgmtconfig/v1/admin/customers/${customerId}/application/${applicationIdA}`
@@ -39,6 +42,7 @@ export async function PUT(req) {
 
         // Validate requests to both application segements came back ok.
         if (!currentAppSemgentConfigA.ok || !currentAppSemgentConfigB.ok) {
+            console.error('Missing current appplication segment A or B information')
             return NextResponse.json({ message: "Unable to get current application configuration" }, { status: 500 })
         }
 
@@ -48,11 +52,12 @@ export async function PUT(req) {
 
         // Check to make sure there is valid current data for both application segments
         if (!dataA || !dataB) {
+            console.error('Missing current application configuration data')
             return NextResponse.json({ message: "Unable to get current application configuration data" }, { status: 500 })
         }
 
         // Update the Data
-        const updatedDataA = { ...dataA, domainNames: [...dataA.domainNames.filter(domain => !dataA.domainNames.includes(domain))] }
+        const updatedDataA = { ...dataA, domainNames: dataA.domainNames.filter(domain => !applications.includes(domain)) }
         const updatedDataB = { ...dataB, domainNames: [...dataB.domainNames, ...applications] }
 
         // Remove Applications From Application Segment A
@@ -66,7 +71,8 @@ export async function PUT(req) {
         })
 
         if (!updatedAppSegmentConfigA.ok) {
-            return NextResponse.json({ message: "Unable to update the application configuration.  Error removing applications from application A" }, { status: 500 })
+            console.error('Unable to update the application configuration - App Segment A')
+            return NextResponse.json({ message: "Unable to update the application configuration" }, { status: 500 })
         }
 
         // Add Applications To Application Segment B 
@@ -80,6 +86,7 @@ export async function PUT(req) {
         })
 
         if (!updatedAppSegmentConfigB.ok) {
+            console.error('Unable to update the application configuration - App Segment B')
             return NextResponse.json({ message: "Unable to update the application configuration.  Error adding applications to application B" }, { status: 500 })
         }
 
