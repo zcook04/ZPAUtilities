@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { cookies } from "next/headers"
 
-export async function GET() {
+export async function GET(res) {
     const customerId = cookies().get("ZscalerCustomerId").value
     const accessToken = cookies().get("ZscalerAccessToken").value
 
@@ -15,5 +15,5 @@ export async function GET() {
 
     const data = await response.json()
 
-    return NextResponse.json({ "status": 200, "message": "Authentication Successful", "data": data.list || [] })
+    return NextResponse.json({ "status": 200, "message": "Application Segments Retrieved", "appSegments": data })
 }

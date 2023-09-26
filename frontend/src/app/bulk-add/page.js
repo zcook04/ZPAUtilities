@@ -1,19 +1,30 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import styles from './bulk-add.module.scss'
 
-const BulkAddPage = async () => {
-    const retrieveApplicationSegments = async () => {
-        try {
-            const response = await fetch("http://localhost:3000/api/app-segments")
-            return response.json()
-        }
-        catch (error) {
-            console.error(error)
-        }
-    }
+const BulkAddPage = () => {
+    const [appSegments, setAppSegments] = useState([]);
 
-    const appSegments = await retrieveApplicationSegments()
-    console.log(appSegments)
+    useEffect(() => {
+        const getAppSegments = async () => {
+            try {
+                const response = await fetch('/api/app-segments', {
+                    method: 'GET'
+                })
+                if (response.status === 200) {
+                    const data = await response.json()
+                    setAppSegments(data.appSegments.list)
+                }
+
+            } catch (error) {
+                console.error(error)
+            }
+
+        }
+
+        getAppSegments()
+    }, [])
 
     return (
         <section className={styles.summarySection}>
@@ -22,7 +33,7 @@ const BulkAddPage = async () => {
             <p>Choose the application from the dropdown below then either paste or upload a text file containing the list of FQDN's and IPv4 addresses seperated by newlines.  An example of the expected input is shown in the text box below.</p>
 
             <select placeholder='Select An Application Segment' name='applicationSegment'>
-                {appSegments.data.map(appSegment => <option value={appSegment.id}>{appSegment.name}</option>
+                {appSegments.map(appSegment => <option key={appSegment.id} value={appSegment.id}>{appSegment.name}</option>
                 )}
             </select>
         </section>
