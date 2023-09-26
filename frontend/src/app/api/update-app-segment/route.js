@@ -19,8 +19,6 @@ export async function PUT(req, res) {
     }
     const url = `https://config.private.zscaler.com/mgmtconfig/v1/admin/customers/${customerId}/application/${applicationId}`
 
-    console.log(url)
-
     // Get the current application configuration
     try {
         const currentAppSemgentConfig = await fetch(url, {

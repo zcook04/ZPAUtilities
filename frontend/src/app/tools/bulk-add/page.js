@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from './bulk-add.module.scss'
+import { toast } from 'react-toastify';
 
 const BulkAddPage = () => {
     const [appSegments, setAppSegments] = useState([]);
@@ -39,7 +40,14 @@ const BulkAddPage = () => {
             method: 'PUT',
             body: JSON.stringify({ "applications": uniqueApplicationArray, "applicationId": selectedAppSegment })
         })
-        console.log(response)
+
+        if (response.ok) {
+            toast.success('Applications added successfully')
+            setSelectedAppSegment('')
+            setApplications([])
+        } else {
+            toast.error('An error occurred adding the applications.')
+        }
     }
 
 

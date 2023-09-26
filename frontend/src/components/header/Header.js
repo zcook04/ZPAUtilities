@@ -45,9 +45,7 @@ const Header = () => {
                         'Content-Type': 'application/json',
                     },
                 })
-
-                const data = await response.json()
-                if (data.status !== 200) {
+                if (!response.ok) {
                     router.push('/')
                 }
 
