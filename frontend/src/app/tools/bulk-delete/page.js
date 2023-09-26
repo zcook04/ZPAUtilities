@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './bulk-delete.module.scss'
 import PageSummary from '@/components/pagesummary/PageSummary'
+import { toast } from "react-toastify"
 
 const BulkDeletePage = () => {
     const [appSegments, setAppSegments] = useState([]);
