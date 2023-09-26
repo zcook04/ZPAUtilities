@@ -15,11 +15,12 @@ export async function POST() {
         body: {}
     })
 
-    if (response.status != 200) {
+    if (!response.ok) {
         return NextResponse.json({ message: "signout failed", response }, { status: 401 })
     }
 
     cookies().delete("ZscalerAccessToken")
+    cookies().delete("ZscalerCustomerId")
 
     return NextResponse.json({ message: "signout success" }, { status: 200 })
 }

@@ -56,12 +56,11 @@ export default function Home() {
         },
       })
 
-      const data = await response.json()
-      if (data.status !== 200) {
+      if (!response.ok) {
         toast.error('Invalid Credentials')
       }
 
-      if (data.status === 200) {
+      if (response.ok) {
         router.push('/tools/dashboard')
         toast.success('Login Successful')
       }

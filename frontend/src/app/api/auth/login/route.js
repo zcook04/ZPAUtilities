@@ -43,9 +43,5 @@ export async function POST(req) {
         maxAge: authresponse.expires_in,
     })
 
-    if (!authresponse.access_token) {
-        return NextResponse.json({ message: "Authentication Failed" }, { stauts: 401 })
-    }
-
     return NextResponse.json({ message: "Authentication Successful" }, { status: 200 })
 }
