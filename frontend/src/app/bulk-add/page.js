@@ -14,7 +14,7 @@ const BulkAddPage = () => {
                 })
                 if (response.status === 200) {
                     const data = await response.json()
-                    setAppSegments(data.appSegments.list)
+                    setAppSegments(data.appSegments)
                 }
 
             } catch (error) {
