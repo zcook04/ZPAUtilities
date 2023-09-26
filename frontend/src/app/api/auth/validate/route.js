@@ -3,7 +3,7 @@ import { cookies } from "next/headers"
 
 export async function POST(request) {
     if (!cookies().has("ZscalerAccessToken"))
-        return NextResponse.json({ "status": 401, "msg": "Access Token Expired Or Missing" })
+        return NextResponse.json({ message: "Access Token Expired Or Missing" }, { status: 401 })
 
-    return NextResponse.json({ "status": 200, "msg": "access token validated" })
+    return NextResponse.json({ message: "access token validated" }, { status: 200 })
 }
