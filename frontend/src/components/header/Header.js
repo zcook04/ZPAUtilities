@@ -74,7 +74,7 @@ const Header = () => {
                     <li>Bulk Move</li>
                 </Link>
                 <Link
-                    href='/tools/bulk-move'
+                    href='/tools/bulk-delete'
                     className={pathname === '/bulk-delete' ? 'active' : ''}>
                     <li>Bulk Delete</li>
                 </Link>
