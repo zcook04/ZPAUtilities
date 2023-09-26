@@ -1,4 +1,4 @@
-# ZScaler Automation Tool
+# ZScaler ZPA Automation Tool
 Work In Progress.  The purpose of this tool is to extend the functionalities missing from the ZPA portal by utilizing the ZPA API.  Additionally, commonly reoccuring tasks and anaylsis where appropriate will be added as needed/available.
 
 ## What Can This App Do
