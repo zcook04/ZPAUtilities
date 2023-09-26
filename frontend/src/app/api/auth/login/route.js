@@ -3,10 +3,10 @@ import { cookies } from "next/headers"
 
 export async function POST(req) {
     const data = await req.json()
-    // const { clientId, clientSecret, customerId } = data
-    const clientId = process.env.CLIENT_ID
-    const clientSecret = process.env.CLIENT_SECRET
-    const customerId = process.env.CUSTOMER_ID
+    const { clientId, clientSecret, customerId } = data
+    // const clientId = process.env.CLIENT_ID
+    // const clientSecret = process.env.CLIENT_SECRET
+    // const customerId = process.env.CUSTOMER_ID
 
     const encodedClientId = encodeURIComponent(clientId)
     const encodedClientSecret = encodeURIComponent(clientSecret)
