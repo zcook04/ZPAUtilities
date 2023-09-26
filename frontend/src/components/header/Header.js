@@ -64,18 +64,23 @@ const Header = () => {
             <h1>Zscaler Private Access Utilities</h1>
             <ul>
                 <Link
+                    href='/tools/dashboard'
+                    className={pathname === '/tools/dashboard' ? 'active' : ''}>
+                    <li>Dashboard</li>
+                </Link>
+                <Link
                     href='/tools/bulk-add'
-                    className={pathname === '/bulk-add' ? 'active' : ''}>
+                    className={pathname === '/tools/bulk-add' ? 'active' : ''}>
                     <li>Bulk Add</li>
                 </Link>
                 <Link
                     href='/tools/bulk-move'
-                    className={pathname === '/bulk-move' ? 'active' : ''}>
+                    className={pathname === '/tools/bulk-move' ? 'active' : ''}>
                     <li>Bulk Move</li>
                 </Link>
                 <Link
                     href='/tools/bulk-delete'
-                    className={pathname === '/bulk-delete' ? 'active' : ''}>
+                    className={pathname === '/tools/bulk-delete' ? 'active' : ''}>
                     <li>Bulk Delete</li>
                 </Link>
 
