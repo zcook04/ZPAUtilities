@@ -1,7 +1,6 @@
 import './globals.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import Header from '@/components/header/Header';
 
 export const metadata = {
   title: 'Zscaler Automation Application',
@@ -13,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <main>{children}</main>
+        {children}
         <ToastContainer />
       </body>
     </html>

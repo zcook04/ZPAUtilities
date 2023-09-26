@@ -12,9 +12,9 @@ export default function ToolsLayout({ children }) {
     return (
         <>
             <Header />
-            {children}
+            <main>
+                {children}
+            </main>
         </>
-
-
     )
 }
