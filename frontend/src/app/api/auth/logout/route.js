@@ -16,10 +16,10 @@ export async function POST() {
     })
 
     if (response.status != 200) {
-        return NextResponse.json({ "status": 401, "msg": "signout failed", response })
+        return NextResponse.json({ message: "signout failed", response }, { status: 401 })
     }
 
     cookies().delete("ZscalerAccessToken")
 
-    return NextResponse.json({ "status": 200, "msg": "signout success" })
+    return NextResponse.json({ message: "signout success" }, { status: 200 })
 }
