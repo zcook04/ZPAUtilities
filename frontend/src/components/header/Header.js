@@ -4,6 +4,9 @@ import React, { useEffect } from 'react'
 import styles from './header.module.scss'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { toast } from 'react-toastify';
+
+
 
 const Header = () => {
     const pathname = usePathname()
@@ -18,20 +21,19 @@ const Header = () => {
                     'Content-Type': 'application/json',
                 },
             })
-            const data = await response.json()
 
-            if (data.status === 200) {
+            if (response.ok) {
                 router.push('/')
             }
 
-            if (data.status !== 200) {
+            if (!response.ok) {
                 console.log(data)
-                toast.error(data.msg)
+                toast.error("An error occured while trying to disconnect")
             }
 
         } catch (error) {
             console.error(error)
-            toast.error(data.msg)
+            toast.error("An error occured while trying to disconnect")
         }
     }
 
