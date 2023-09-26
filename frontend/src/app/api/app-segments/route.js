@@ -36,7 +36,5 @@ export async function GET(res) {
         }
     }
 
-    console.log(applicationSegments)
-
     return NextResponse.json({ "status": 200, "message": "Application Segments Retrieved", "appSegments": applicationSegments })
 }
