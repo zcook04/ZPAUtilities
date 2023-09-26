@@ -16,6 +16,14 @@
         color: black;
     }
 
+    select:focus {
+        outline: none;
+    }
+
+    select:hover {
+        cursor: pointer;
+    }
+
     textarea {
         border: 0;
         resize: none;
