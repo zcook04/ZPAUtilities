@@ -29,8 +29,8 @@ const BulkAddPage = () => {
     return (
         <section className={styles.summarySection}>
             <h2>Add Bulk Applications</h2>
-            <p>Given a configured application segment this tool will add a list of applications to it up to 1000 at a time.  The applications must not already be configured in another application segment and should consist of FQDN's and valid IPv4 addresses only.</p>
-            <p>Choose the application from the dropdown below then either paste or upload a text file containing the list of FQDN's and IPv4 addresses seperated by newlines.  An example of the expected input is shown in the text box below.</p>
+            <p>When provided with a configured application segment, this tool can efficiently append a list of up to 1000 applications to it. These applications should meet the following criteria: they must not be already configured within another application segment, and they should exclusively comprise Fully Qualified Domain Names (FQDNs) and valid IPv4 addresses.</p>
+            <p>To proceed, please select the desired application from the dropdown menu below, and then either paste the list of FQDNs and IPv4 addresses, separated by newlines, or upload a text file containing this information. An illustrative example of the expected input format is displayed in the text box below for reference.</p>
 
             <select placeholder='Select An Application Segment' name='applicationSegment'>
                 {appSegments.map(appSegment => <option key={appSegment.id} value={appSegment.id}>{appSegment.name}</option>
