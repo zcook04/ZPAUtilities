@@ -24,7 +24,7 @@ export async function POST(req) {
     const authresponse = await response.json()
 
     if (!authresponse.access_token) {
-        return NextResponse.json({ "status": 401, "message": "Authentication Failed" })
+        return NextResponse.json({ message: "Authentication Failed" }, { status: 401 })
     }
 
     cookies().set({
@@ -44,8 +44,8 @@ export async function POST(req) {
     })
 
     if (!authresponse.access_token) {
-        return NextResponse.json({ "status": 401, "message": "Authentication Failed" })
+        return NextResponse.json({ message: "Authentication Failed" }, { stauts: 401 })
     }
 
-    return NextResponse.json({ "status": 200, "message": "Authentication Successful" })
+    return NextResponse.json({ message: "Authentication Successful" }, { status: 200 })
 }
