@@ -6,3 +6,4 @@ Work In Progress.  The purpose of this tool is to extend the functionalities mis
 - Configure functionality for Bulk Move
 - Configure functionality for BUlk Delete
 - Configure policy download and analysis.
+- Dockerize Application
