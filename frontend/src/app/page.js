@@ -32,7 +32,7 @@ export default function Home() {
 
         const data = await response.json()
         if (data.status === 200) {
-          router.push('/dashboard')
+          router.push('/tools/dashboard')
         }
 
       } catch (error) {
@@ -62,7 +62,7 @@ export default function Home() {
       }
 
       if (data.status === 200) {
-        router.push('/dashboard')
+        router.push('/tools/dashboard')
         toast.success('Login Successful')
       }
     } catch (error) {
