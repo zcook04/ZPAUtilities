@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './bulk-add.module.scss'
 import { toast } from 'react-toastify';
+import PageSummary from '@/components/pagesummary/PageSummary';
 
 const BulkAddPage = () => {
     const [appSegments, setAppSegments] = useState([]);
@@ -54,10 +55,11 @@ const BulkAddPage = () => {
 
     return (
         <section className={styles.summarySection}>
-            <h2>Add Bulk Applications</h2>
-            <p>When provided with a configured application segment, this tool can efficiently append a list of up to 1000 applications to it. These applications should meet the following criteria: they must not be already configured within another application segment, and they should exclusively comprise Fully Qualified Domain Names (FQDNs) and valid IPv4 addresses.</p>
-            <p>To proceed, please select the desired application from the dropdown menu below, and then paste the list of FQDNs and IPv4 addresses, separated by newlines.</p>
-
+            <PageSummary
+                title='Add Bulk Applications'
+                description='When provided with a configured application segment, this tool can efficiently append a list of up to 1000 applications to it. These applications should meet the following criteria: they must not be already configured within another application segment, and they should exclusively comprise Fully Qualified Domain Names (FQDNs) and valid IPv4 addresses.
+                
+                To proceed, please select the desired application from the dropdown menu below, and then paste the list of FQDNs and IPv4 addresses, separated by newlines.' />
             <select placeholder='Select An Application Segment' name='applicationSegment' onChange={(e) => setSelectedAppSegment(e.target.value)} value={selectedAppSegment}>
                 <option value=''>Select An Application Segment</option>
                 {appSegments.map(appSegment => <option key={appSegment.id} value={appSegment.id}>{appSegment.name}</option>
