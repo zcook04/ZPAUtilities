@@ -19,22 +19,22 @@ export async function GET(res) {
                     "Authorization": "Bearer " + accessToken
                 }
             })
-            const data = await response.json()
 
             if (response.ok) {
+                const data = await response.json()
                 applicationSegments.push(...data.list)
                 currentPage++
                 totalPages = parseInt(data.totalPages);
             } else {
                 console.error(`Error fetching data from page ${currentPage}`);
-                break;
+                return NextResponse.json({ message: "Error fetching data from page", "error": error }, { status: 500 })
             }
 
         } catch (error) {
             console.error(`Error fetching data from page ${currentPage}: ${error}`);
-            break;
+            return NextResponse.json({ message: "Error fetching data from page", "error": error }, { status: 500 })
         }
     }
 
-    return NextResponse.json({ "status": 200, "message": "Application Segments Retrieved", "appSegments": applicationSegments })
+    return NextResponse.json({ message: "Application Segments Retrieved", "appSegments": applicationSegments }, { status: 200 })
 }
