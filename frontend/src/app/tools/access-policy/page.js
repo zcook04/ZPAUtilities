@@ -3,9 +3,10 @@
 import React, { useEffect, useState } from 'react'
 import styles from './page.module.scss'
 import PageSummary from '@/components/pagesummary/PageSummary'
+import AccessPolicyItem from '@/components/accessPolicyItem/AccessPolicyItem'
 
 const AccessPolicy = () => {
-    const [accessPolicy, setAccessPolicy] = useState({})
+    const [accessPolicy, setAccessPolicy] = useState([])
 
     useEffect(() => {
         const getAccessPolicy = async () => {
@@ -25,9 +26,6 @@ const AccessPolicy = () => {
         getAccessPolicy()
     }, [])
 
-    console.log(accessPolicy)
-
-
     return (
         <>
             <section className={styles.summarySection}>
@@ -37,6 +35,7 @@ const AccessPolicy = () => {
             </section>
             <section className={styles.policyViewerSection}>
                 <h2>Access Policy</h2>
+                {accessPolicy.list && accessPolicy.list.map(policy => <AccessPolicyItem key={policy.id} name={policy.name ? policy.name : ''} />)}
             </section>
         </>
     )
