@@ -1,10 +1,12 @@
 import React from 'react'
 import styles from './accessPolicyItem.module.scss'
 
-const AccessPolicyItem = ({ name }) => {
+const AccessPolicyItem = ({ name, id, ruleOrder, priority }) => {
     return (
         <article className={styles.wrapper}>
-            {name}
+            <p>{ruleOrder}</p>
+            <p>{priority}</p>
+            <p>{name}</p>
         </article>
     )
 }

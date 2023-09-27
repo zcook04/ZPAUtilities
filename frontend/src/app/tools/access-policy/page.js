@@ -35,7 +35,16 @@ const AccessPolicy = () => {
             </section>
             <section className={styles.policyViewerSection}>
                 <h2>Access Policy</h2>
-                {accessPolicy.list && accessPolicy.list.map(policy => <AccessPolicyItem key={policy.id} name={policy.name ? policy.name : ''} />)}
+                <div className={styles.policyHeaders}>
+                    <p>Rule Order</p>
+                    <p>Priority</p>
+                    <p>Name</p>
+                    <p>Conditions</p>
+                </div>
+                {accessPolicy.list && accessPolicy.list.map(policy => <AccessPolicyItem
+                    key={policy.id}
+                    {...policy}
+                />)}
             </section>
         </>
     )
