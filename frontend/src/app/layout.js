@@ -2,11 +2,12 @@ import './globals.scss'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
-import { Roboto_Serif } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 
-const roboto = Roboto_Serif({
+const poppins = Poppins({
   subsets: ['latin'],
-  display: 'swap'
+  display: 'swap',
+  weight: ['100', '200', '300', '400', '500', '600', '700']
 })
 
 export const metadata = {
@@ -17,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
   return (
-    <html lang="en" className={roboto.className}>
+    <html lang="en" className={poppins.className}>
       <body>
         {children}
         <ToastContainer />
