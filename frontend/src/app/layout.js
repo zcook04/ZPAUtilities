@@ -1,4 +1,4 @@
-import './globals.css'
+import './globals.scss'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
