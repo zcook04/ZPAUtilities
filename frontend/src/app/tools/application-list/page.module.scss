@@ -1,0 +1,40 @@
+.totalApplicationsSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    article {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 1ren;
+        height: 200px;
+        width: 200px;
+        background-color: white;
+        box-shadow: var(--box-shadow);
+        transition: all .25s ease-in-out;
+
+        h3 {
+            height: 33%
+        }
+
+        p {
+            height: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+        }
+
+    }
+
+    article:hover {
+        cursor: pointer;
+        opacity: .8;
+        transition: all .25s ease-in-out;
+        transform: scale(1.1);
+    }
+}

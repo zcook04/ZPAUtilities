@@ -83,6 +83,11 @@ const Header = () => {
                     className={pathname === '/tools/bulk-delete' ? 'active' : ''}>
                     <li>Bulk Delete</li>
                 </Link>
+                <Link
+                    href='/tools/application-list'
+                    className={pathname === '/tools/application-list' ? 'active' : ''}>
+                    <li>AppSegments</li>
+                </Link>
 
                 <li onClick={signOut}>Disconnect</li>
 

@@ -22,6 +22,7 @@ export async function GET(res) {
 
             if (response.ok) {
                 const data = await response.json()
+                console.log(data)
                 applicationSegments.push(...data.list)
                 currentPage++
                 totalPages = parseInt(data.totalPages);
